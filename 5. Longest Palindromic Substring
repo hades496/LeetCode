@@ -1,0 +1,33 @@
+class Solution
+{
+public:
+    string addshape(string s)
+    {
+        string s1(s.length()*2+1,'#');
+        for (int i=0;i<=s.length();i++) s1[2*i+1]=s[i];
+        return s1;
+    }
+    string delshape(string s)
+    {
+        string s1(s.length()/2,' ');
+        for (int i=0;i<s1.length();i++) s1[i]=s[2*i+1];
+        return s1;
+    }
+    string longestPalindrome(string s)
+    {
+        s=addshape(s);
+        int i,pos=0,MaxRight=0,res=0;
+        vector <int> RL(s.length(),0);
+        for (i=0; i<s.length(); i++){
+            if (i<MaxRight) RL[i]=min(RL[pos*2-i],MaxRight-i);
+            else RL[i]=1;
+            while( i+RL[i]<s.length() && i-RL[i]>=0 && s[i-RL[i]]==s[i+RL[i]] ) RL[i]++;
+            if (i+RL[i]>MaxRight){
+                MaxRight=i+RL[i]-1;
+                pos=i;
+            }
+            if (RL[i]>RL[res]) res=i;
+        }
+        return delshape(s.substr(res-RL[res]+1,2*RL[res]-1));
+    }
+};
