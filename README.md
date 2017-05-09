@@ -1,4 +1,7 @@
 # LeetCode<br>
 My LeetCode solution<br>
 ### 4.Longest Substring Without Repeating Characters：<br>
-  Using the dict[] to record the last position of each letter.<br>
+Using the dict[] to record the last position of each letter.<br>
+### 5. Longest Palindromic Substring:<br>
+Learning "Manacher" algorithm.<br>
+  tips:substr(start_position,lens)<br>
