@@ -19,6 +19,7 @@ div = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
 ### 14. Longest Common Prefix  
 - 利用zip(\*strs) 实现行列重排  
 ### 14. Longest Common Prefix  
+简单的思路如下：
 ```
 class Solution(object):
     def threeSumClosest(self, nums, target):
@@ -29,30 +30,19 @@ class Solution(object):
         """
         res = 0x7fffffff
         nums.sort()
-        if target < 0:
-            for i in xrange(len(nums)):
-                left, right = i + 1, len(nums) - 1
-                while left < right:
-                    sum = nums[i] + nums[left] + nums[right]
-                    if abs(sum - target) < abs(res - target): res = sum
-                    if (sum > target):
-                        right -= 1
-                    elif (sum < target):
-                        left += 1
-                    else:
-                        return res
-        else:
-            nums = nums[::-1]
-            for i in xrange(len(nums)):
-                left, right = i + 1, len(nums) - 1
-                while left < right:
-                    sum = nums[i] + nums[left] + nums[right]
-                    if abs(sum - target) < abs(res - target): res = sum
-                    if (sum < target):
-                        right -= 1
-                    elif (sum > target):
-                        left += 1
-                    else:
-                        return res
-        return res
+
+        for i in xrange(len(nums)):
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                sum = nums[i] + nums[left] + nums[right]
+                if abs(sum - target) < abs(res - target): res = sum
+                if (sum > target):
+                    right -= 1
+                elif (sum < target):
+                    left += 1
+                else:
+                    return res
+        return res
 ```
+复杂度n^2，实际上当target<0时，答案更有可能是两个负数和一个正数，反之答案更有可能是两个正数和一个负数，因此分开处理可以更快的找到最优解。
+ 
