@@ -1,0 +1,30 @@
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        dic, has, res = {}, {}, set()
+        #重复的数最多保留3个
+        for i in nums: dic[i] = 0
+        for i in nums: dic[i] += 1
+        nums = []
+        for i, times in dic.items():
+            if times > 3: times = 3
+            for _ in range(times): nums.append(i)
+        nums.sort()
+        #固定一个数，然后首尾遍历
+        for i in range(len(nums)):
+            left, right = i + 1, len(nums) - 1
+            while i < left < right:
+                sum = nums[i] + nums[left] + nums[right]
+                if sum == 0:
+                    res.add((nums[i], nums[left], nums[right]))
+                    left += 1
+                    right -= 1
+                else:
+                    if (sum > 0):
+                        right -= 1
+                    else:
+                        left += 1
+        return (map(list,res))
