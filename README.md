@@ -23,14 +23,8 @@ div = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
 ```
 class Solution(object):
     def threeSumClosest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
         res = 0x7fffffff
         nums.sort()
-
         for i in xrange(len(nums)):
             left, right = i + 1, len(nums) - 1
             while left < right:
