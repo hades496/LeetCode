@@ -19,8 +19,7 @@ div = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
 ### 14. Longest Common Prefix  
 - 利用zip(\*strs) 实现行列重排  
 ### 14. Longest Common Prefix  
-'
-class Solution(object):
+'''class Solution(object):
     def threeSumClosest(self, nums, target):
         """
         :type nums: List[int]
@@ -54,7 +53,6 @@ class Solution(object):
                         left += 1
                     else:
                         return res
-        return res
-'
+        return res'''
         
  
