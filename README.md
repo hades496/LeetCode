@@ -18,7 +18,7 @@ div = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
 - it's same to 12.
 ### 14. Longest Common Prefix  
 - 利用zip(\*strs) 实现行列重排  
-### 14. Longest Common Prefix  
+### 15. 3Sum  
 简单的思路如下：
 ```
 class Solution(object):
@@ -39,4 +39,22 @@ class Solution(object):
         return res
 ```
 复杂度n^2，实际上当target<0时，答案更有可能是两个负数和一个正数，反之答案更有可能是两个正数和一个负数，因此分开处理可以更快的找到最优解。
- 
+### 17. Letter Combinations of a Phone Number
+ - 用递归的形式会产生一定的迭代开销，故用栈模拟递归的形式提高效率，下面是用栈模拟递归的基本思路：
+ ```
+        res = [] 
+        head = Solution.StackMod(0, '', 0) 
+        stack = [head, ] #初始化栈
+        while stack: #当栈非空
+            head = stack[-1] #获取栈顶元素
+            if head.step == length: #递归终点
+                res.append(head.now)
+                stack.pop() 
+            else:
+                if head._ < len(diction[digits[head.step]]): #若当前节点还能继续扩展
+                    new = Solution.StackMod(head.step + 1, head.now + diction[digits[head.step]][head._])
+                    head._ += 1
+                    stack.append(new)#新节点入栈
+                else:
+                    stack.pop() #当前节点出栈
+ ```
